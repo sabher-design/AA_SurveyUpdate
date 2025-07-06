@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        <em> Please tick a box on the scale, where the value 0 means: ‘not at all’ and the value 10 means: ‘very strongly’. </em>
+    </p>
+
+    {% for field in form %}
+        <div style="margin-bottom: 35px;">
+            <p><label>{{ field.label|safe }}</label></p>
+            {{ field }}
+        </div>
+    {% endfor %}
+
+
+
+{% next_button %}
+
+{% endblock %}

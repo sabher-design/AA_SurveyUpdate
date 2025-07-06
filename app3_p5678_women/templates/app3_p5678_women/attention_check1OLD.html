@@ -1,0 +1,94 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %} 
+<div class="center"> 
+</div> 
+{% endblock %}
+
+{% block content %}
+
+<div class="center">
+    <strong>Please click on the little dot at the bottom of the screen. Do not click on the scale items that are labeled from 1 to 9.</strong>
+    <strong>This is just to screen out random clicking.</strong>
+    
+    <div class="pseudo-questionaire">
+        <!-- tags von html die ein input geben -->
+        <span class="heading">Very Rarely</span>
+        <button class="dot" value="True">1</button>
+        <button class="dot" value="True">2</button>
+        <button class="dot" value="True">3</button>
+        <button class="dot" value="True">4</button>
+        <button class="dot" value="True">5</button>
+        <button class="dot" value="True">6</button>
+        <button class="dot" value="True">7</button>
+        <button class="dot" value="True">8</button>
+        <button class="dot" value="True">9</button>
+        <span class="heading">Very Frequently</span>
+        <!-- siehe otree documentation Forms  -->
+        <!-- button definieren, Befehl value gibt dem button einen wert, Zahl sieht der user, wenn also diese anklicken dann wert true -->
+    </div>
+</div>
+
+<div class="next-button">
+    <button class="next-button-blue-dot" value="False"></button>
+    <!-- wenn der andere button angeklickt wird dann wert false  -->
+</div>
+
+<style>
+    /* style tag, sieht der user, gibt style directions */
+    /* hier verändert man farbe, hintergrund, breite, höhe, abstände ... */
+    body{
+        background-color: white;
+        color: black;
+    }
+    .pseudo-questionaire{
+        margin-top: 40px;
+    }
+    .center{
+        margin-top: 40px;
+        text-align: center;
+    }
+    .dot{
+        height: 25px;
+        width: 25px;
+        background-color: black;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 10px;
+        cursor: pointer;
+        color: white;
+    }
+    .heading{
+        margin-left: 20px;
+    }
+    .hide{
+        display:none !important;
+    }
+    .next-button{
+        text-align: center;
+        width: 100%;
+        margin-top: 150px;
+    }
+    .next-button-blue-dot{
+        height: 15px;
+        width: 15px;
+        background-color: black;
+        border: 1px black;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    let element = document.getElementsByClassName("form-control")
+    console.log(element)
+    // Document ist ein objekt das html elemente enthält
+    // getelementsbyId ist eine suchfunktion, siehe console 
+    // let "das ist die varibale element" 
+</script>
+
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "global/Page.html"%}
+{% load otree static %}
+
+{% block title %}
+ Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <em>Please tick a box on the scale, where the value 0 means: ‘not at all’ and the value 10 means: ‘very strongly’.</em>
+
+
+    <br>
+    <br>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group mb-4">
+                <label class="mb-2">{{ field.label }}</label><br>
+                {% for subfield in field %}
+                    <div class="form-check form-check-inline">
+                        {{ subfield.tag }}
+                        <label class="form-check-label">{{ subfield.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </form>
+
+    <br>
+
+        {% next_button %}
+
+{% endblock %}

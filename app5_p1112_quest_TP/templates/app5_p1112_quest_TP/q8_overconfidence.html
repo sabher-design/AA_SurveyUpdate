@@ -1,0 +1,79 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+  Questionnaire 
+{% endblock %}
+
+
+{% block content %}
+    <p> Thank you for answering the quiz questions.  </p>
+    <p> <b>Compared to other participants in this study, where do you think you rank in terms of correctly answered questions? </b></p>
+    <p>  <i>Please adjust the slider accordingly by clicking on it and moving it horizontally. </i></p>
+ 
+    
+     {% formfield player.your_rank %}
+
+    <div class="input-group">
+        <span class="input-group-text">0</span>
+    
+        <input class="slider" type="range" name="position" id="positionID" value="0" min="0%" max="100%"
+            oninput="valueID.value = positionID.value;">
+    
+        <span class="input-group-text">100</span>
+    </div>
+    <br>
+    <div class="outputs">
+        <div class="money">
+            <span>
+                <output class="money-person-1" name="valueName" id="valueID">0</output><span>% of people had fewer correct answers than me.</span>
+            </span>
+        </div>
+    </div>
+    
+    
+    </div>
+    
+    <script>
+        let element_confidence = document.getElementById("id_your_rank")
+        element_confidence.classList.add("hide");
+    
+        let slider_1 = document.querySelectorAll("input[name=position]")
+        slider_1[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+            var value_1 = valueID.value
+            element_confidence.value = value_1
+        });
+    </script>
+
+<style>
+    .slider {
+        width: 200px;
+    }
+
+    .outputs {
+        margin-top: -20px;
+        margin-bottom: 50px;
+    }
+
+    .money-person-1 {
+        padding-left: -30px;
+    }
+
+    .money-person-2 {
+        padding-left: -30px;
+    }
+
+    .tokens-person-1 {
+        padding-left: 15px;
+    }
+    .hide {
+    display: none !important;
+    }
+
+    
+</style>
+
+  <label class="col-form-label">
+
+  {% next_button %}
+{% endblock %}

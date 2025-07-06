@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Feedback"%}
+{% endblock %}
+
+{% block content %}
+    <h4>
+        {% blocktrans with solved_trial=player.solved_trial notSolved_trial=player.notSolved_trial %}
+        You have encoded {{solved_trial}} words correctly and {{notSolved_trial}} words incorrectly in the trial task.
+        {% endblocktrans %}
+    </h4>
+    <br>
+    {% next_button %}
+
+
+{% endblock %}

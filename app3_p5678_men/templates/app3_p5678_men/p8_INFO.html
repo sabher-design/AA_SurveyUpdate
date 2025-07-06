@@ -1,0 +1,124 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Guesses
+{% endblock %}
+
+
+{% block content %}
+    
+<p> Do you expect to be more or less or equally likely to win the tournament <strong>with the special rule 
+        than without the special rule?</strong> </p>
+
+{% formfield player.belief1_info %}
+<br>
+
+{% formfield player.belief2_info %}
+
+<label class="col-form-label">
+
+ How do you rate your chance of winning the tournament <strong> with the special rule?</strong>
+</label>
+
+
+<div class="input-group">
+    <span class="input-group-text">0%</span>
+
+    <input class="slider" type="range" name="position" id="positionID" value="1" min="1%" max="100%"
+        oninput="valueID.value = positionID.value;">
+
+    <span class="input-group-text">100%</span>
+</div>
+<br>
+<div class="outputs">
+    <div class="money">
+        <span>
+            <output class="money-person-1" name="valueName" id="valueID">0</output> <span>%</span>
+        </span>
+    </div>
+</div>
+
+<br>
+
+<label class="col-form-label">
+ How do you rate your chance of winning the tournament <strong> without the special rule?</strong>
+</label>
+
+<div class="input-group">
+    <span class="input-group-text">0%</span>
+
+    <input class="slider" type="range" name="pos" id="posID" value="1" min="1%" max="100%"
+        oninput="valID.value = posID.value;">
+
+    <span class="input-group-text">100%</span>
+</div>
+<br>
+<div class="outputs">
+    <div class="money">
+        <span>
+            <output class="money-person-1" name="valueName" id="valID">0</output> <span>%</span>
+        </span>
+    </div>
+</div>
+
+{% formfield player.belief3_info %}
+
+<label class="col-form-label">
+    Please click on More likely.
+  
+   </label>
+
+   {% formfield player.attention_check2 %}
+   
+
+<script>
+    let element_belief2_info = document.getElementById("id_belief2_info")
+    let element_belief3_info = document.getElementById("id_belief3_info")
+    element_belief2_info.classList.add("hide");
+    element_belief3_info.classList.add("hide");
+
+    let slider_1 = document.querySelectorAll("input[name=position]")
+    slider_1[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+        var value_1 = valueID.value
+        element_belief2_info.value = value_1
+    });
+    let slider_2 = document.querySelectorAll("input[name=pos]")
+    slider_2[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+        var value_2 = valID.value
+        element_belief3_info.value = value_2
+    });
+</script>
+
+<style>
+    .slider {
+        width: 200px;
+    }
+
+    .outputs {
+        margin-top: -20px;
+        margin-bottom: 50px;
+    }
+
+    .money-person-1 {
+        padding-left: 130px;
+    }
+
+    .money-person-2 {
+        padding-left: 260px;
+    }
+
+    .tokens-person-1 {
+        padding-left: 15px;
+    }
+
+    .hide {
+        display: none !important;
+    }
+</style>
+
+<br>
+<br>
+{% next_button %}
+
+{% endblock %}

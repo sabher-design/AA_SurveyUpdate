@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Questionnaire
+{% endblock %}
+
+
+{% block content %}
+  <p>
+    Reminder: You are a decision-maker.
+ </p>
+
+ <p>On a scale between 0 (not at all) and 6  (very much), </p>
+{% formfields %}
+
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Feedback"%}
+{% endblock %}
+
+{% block content %}
+    <h5>
+    {% blocktrans with solved=player.solved notSolved=player.notSolved %}
+    The time for the word encoding task is up. You have encoded {{solved}} words correctly, and {{notSolved}} words incorrectly.
+    {% endblocktrans %}
+    </h5>
+
+    <br>
+    <p> 
+        You will be informed about the outcome of the tournament in a separate feedback e-mail when you receive your payment.
+    </p>
+
+    <br>
+
+    <p>  The next part is a questionnaire.</p>
+    <br>
+    {% next_button %}
+
+
+{% endblock %}

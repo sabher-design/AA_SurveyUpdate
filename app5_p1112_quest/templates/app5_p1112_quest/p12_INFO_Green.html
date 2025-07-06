@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Sending Smileys
+{% endblock %}
+
+
+{% block content %}
+  <p>
+  As a friendly gesture you can send a smiley icon to tournament participants. 
+  The smileys you receive from others as well as the smileys others receive 
+  from you will be delivered together in the feedback email when you receive your payment. </p>
+
+  <p>
+  To whom do you want to send a smiley icon? </p>
+
+  <p> <b>Tournament participant 1 (Green) is you. </b></p>
+
+ {% formfields %}
+
+{% next_button %}
+
+{% endblock %}

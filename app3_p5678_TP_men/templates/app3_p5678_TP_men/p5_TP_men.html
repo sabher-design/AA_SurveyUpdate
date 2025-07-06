@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+  Groups and Multipliers
+{% endblock %}
+
+
+{% block content %}
+    <p>
+    <b> Groups: </b> Half of the tournament participants will be women. The other half will be men.  </p>
+
+    <p><b>You previously stated that you are a man. </b></p>
+
+ 
+    <p> During each round of the tournament, you will complete the word encoding task for 5 minutes.
+        Your earnings in each round will depend on what we call "final performance".
+        It consists of the number of correctly encoded words times a multiplier.
+        Female participants have a multiplier of 0.9. Male participants have a multiplier of 1.
+     </p>
+ 
+    <p>For example, if you are a woman and you encode 10 words correctly, your final performance is 10 x 0.9 = 9 words.
+       If you are a man and you encode 10 words correctly, your final performance is 10 x 1 = 10 words.
+     </p>
+         
+     <p> Since you are man your final performance is: </p>
+        
+      <p>Final performance = 1 x total number of correctly encoded words in five minutes
+         </p>
+    
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Guesses
+{% endblock %}
+
+
+{% block content %}
+    
+    <p> Do you expect to be more or less or equally likely to win the tournament <strong>with the special rule 
+        than without the special rule?</strong> </p>
+        <br>
+        {% formfield player.belief1_info %}
+        <br>
+
+        <label class="col-form-label">
+        How do you rate your chance of winning the tournament <strong> with the special rule?</strong>
+        </label>
+
+
+        <div class="input-group">
+            <span class="input-group-text">0%</span>
+            
+            <input class="slider" type="range" name="position" id="positionID" value="1" min="1%" max="100%" 
+            oninput="valueID.value = positionID.value;">
+
+            <span class="input-group-text">100%</span>
+        </div>
+        <div class="outputs"> 
+            <div class="tokens"> 
+                <span>
+                    <output class="tokens-person-1" name="valueName" id="valueTokenA"></output> <span></span>
+                </span> 
+                
+            </div>
+            <div class="money">
+                <span>
+                    <output class="money-person-1" name="valueName" id="valueID">0</output> <span>%</span>
+                </span> 
+                 
+            </div>
+        </div>
+        <style>
+            .slider{
+                width: 200px;
+            }
+            .outputs{
+                margin-top: -20px;
+                margin-bottom: 50px;
+            }
+            .money-person-1{
+                padding-left: 130px;
+            }
+            .money-person-2{
+                padding-left: 260px;
+            }
+            .tokens-person-1{
+                padding-left: 15px;
+            }
+            
+         </style>
+
+        <label class="col-form-label">
+
+
+         How do you rate your chance of winning the tournament <strong> without the special rule?</strong>
+        </label>
+        
+          
+        <div class="input-group">
+            <span class="input-group-text">0%</span>
+
+            <input type="range" min="0" max="100" value="0" class="slider" id="sliderRange" oninput="sliderID.value = sliderID.value;">
+
+            <span class="input-group-text">100%</span>
+
+            <td>
+                <p><span id="demo"></span>%</p>
+            </td>
+            
+        </div>
+          
+        <script>
+        var rangeslider = document.getElementById("sliderRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = rangeslider.value;
+          
+        rangeslider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+        </script>
+          
+        </body>
+        </html>
+
+        <style>
+            .slider{
+                width: 200px;
+            }
+            .outputs{
+                margin-top: -20px;
+                margin-bottom: 50px;
+            }
+            .money-person-1{
+                padding-left: 130px;
+            }
+            .money-person-2{
+                padding-left: 260px;
+            }
+            .tokens-person-1{
+                padding-left: 15px;
+            }
+            
+        </style>
+
+
+
+
+        <br>
+        <br>
+    {% next_button %}
+{% endblock %}

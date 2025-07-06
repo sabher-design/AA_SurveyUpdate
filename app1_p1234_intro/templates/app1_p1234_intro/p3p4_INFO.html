@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+The Word Encoding Task
+{% endblock %}
+ 
+
+{% block content %}
+<p>In the tournament, you will complete a word encoding task. Before we explain the details of the tournament, 
+	you will have 2 minutes to try out the task yourself. 
+</p>
+
+<p> In the task, you will see a number of words and your task will be to encode these words by
+	 substituting the letters of the alphabet with numbers using a table like this:
+</p>
+<br>
+   <img width="80%" height="80%" alt="Examplary Task" src="{% static "task.PNG" %}"/>
+<br>
+<br>
+<p>
+Example: You are given the word DAI. The letters in the table show that D=285, A=289, and I=978.</p>
+
+<p>
+Once you encode a word correctly, the computer will prompt you with another word which you will be asked to encode. 
+Once you encode that word, you will be given another word and so on. </p>
+
+<p>
+You may now try the task yourself for 2 minutes. The remaining time is displayed at the top of your screen. 
+The time starts once you click “Next”.
+</p>
+
+
+{% next_button %}
+
+{% endblock %}

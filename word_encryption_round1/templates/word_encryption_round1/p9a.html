@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Tournament - Round 1
+{% endblock %}
+
+
+{% block content %}
+    
+<p> 
+    You will now participate in round 1 of the tournament. 
+    Whether or not the special rule applies for this round depends on the choices of the decision makers. 
+    You will learn what these choices were and therefore whether or not the special rule applies in the 
+    feedback e-mail when you receive your payment.
+</p>
+
+<br>
+<p> You will now work on the word encoding task under tournament conditions <b>for 6 rounds.</b> 
+    You have <b>5 minutes</b> to work on the task <b>in each round.</b> 
+    The remaining time is displayed at the top of your screen. The time starts once you click “Next”.
+     </p>
+
+{% next_button %}
+
+{% endblock %}

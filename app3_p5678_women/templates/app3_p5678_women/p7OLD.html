@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Your Choice 
+{% endblock %}
+
+
+{% block content %}
+ 
+ <ul>
+  <li><p> <b>No special rule:</b> The two tournament participants with highest final performance 
+    (= number of correctly encoded words x multiplier) are the two winners of the tournament, regardless of their color.</p></li>
+    <p> or</p>
+  <li><p> <b>The special rule is applied: </b> At least one winner must be a member of the Green group who have the low multiplier of 0.9. 
+    If this is not automatically the case, the tournament participant with the highest performance among the three members of the Green Group
+     will replace the tournament participant with the second highest final performance as a winner.</p></li>
+</ul>
+
+ <p><b> Which rule do you choose? Please note that this is an important choice because it may affect your and the other tournament participants' earnings. </b> </p>
+  <p> </p>
+   {% formfields %}
+    
+  <p> </p>
+  
+{% next_button %}
+
+{% endblock %}

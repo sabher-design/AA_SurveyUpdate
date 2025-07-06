@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+  Questionnaire 
+{% endblock %}
+
+
+{% block content %}
+    <p> Thank you for answering the quiz questions.  </p>
+    <p> Compared to other participants in this study, where do you think you rank in terms of correctly answered questions? </p>
+    <p> Please adjust the slider accordingly by clicking on it and moving it horizontally. </p>
+    
+    <p> (Slider from 0-100 indicating percentiles) </p>
+
+    <br>
+  </label>
+  <div class="input-group">
+      <span class="input-group-text"> 0</span>
+      
+      <input class="slider" type="range" name="position" id="positionID" value="1" min="1%" max="100%" 
+      oninput="valueID.value = positionID.value;">
+
+      <span class="input-group-text"> 100  </span>
+  </div>
+  <div class="outputs"> 
+      <div class="tokens"> 
+          <span>
+              <output class="tokens-person-1" name="valueName" id="valueTokenA"></output> <span></span>
+          </span> 
+          
+      </div>
+      <br>
+      <div class="money">
+          <span>
+              <output class="money-person-1" name="valueName" id="valueID">0</output> <span>% of people had fewer correct answers than me.</span>
+          </span> 
+           
+      </div>
+  </div>
+  <style>
+      .slider{
+          width: 200px;
+      }
+      .outputs{
+          margin-top: -20px;
+          margin-bottom: 50px;
+      }
+      .money-person-1{
+          padding-left: 10px;
+      }
+      .top1{
+          padding-right: -30px;
+      }
+      .top2{
+          padding-right: -30px;
+      }
+      .tokens-person-1{
+          padding-left: 15px;
+      }
+      
+   </style>
+
+  <label class="col-form-label">
+
+  {% next_button %}
+{% endblock %}

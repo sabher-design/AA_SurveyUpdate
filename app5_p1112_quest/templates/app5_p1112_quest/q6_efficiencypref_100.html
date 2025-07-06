@@ -1,0 +1,114 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+   Questionnaire
+{% endblock %}
+
+{% block content %}
+        {% formfield player.token_1 %}
+        {% formfield player.token_2 %}
+        <p>
+            Now imagine you are in the following hypothetical situation:
+            You are asked to divide 100 dollars between two people. 
+            For every dollar you assign to Person A, he or she receives 1 Dollar. 
+            For every dollar you assign to Person B, he or she receives 50 Cents. The other 50 Cents are lost.
+        </p>
+
+        <p>
+            How would you like to divide the money between them?
+        </p>
+
+    
+        <div class="input-group">
+            <span class="input-group-text">Person A</span>
+            
+            <input class="slider" type="range" name="position" id="positionID" value="50" min="1" max="100" 
+            oninput="valueID.value = positionID.value;">
+
+            <span class="input-group-text">Person B</span>
+        </div>
+        <div class="outputs"> 
+            <div class="tokens"> 
+                <span>
+                    <output class="tokens-person-1" name="valueName" id="valueTokenA">50</output> <span></span>
+                </span> 
+                <span>
+                    <output class="tokens-person-2" name="valueName" id="valueTokenB">50</output> <span></span>
+                </span> 
+            </div>
+            <div class="money">
+                <span>
+                    <output class="money-person-1" name="valueName" id="valueID">50</output> <span>(USD)</span>
+                </span> 
+                <span>
+                    <output class="money-person-2" name="valueName" id="valueB">25</output> <span>(USD)</span>
+                </span> 
+            </div>
+        </div>
+            
+            <script>
+            let e = document.getElementById("valueB")
+            let element_token_1 = document.getElementById("id_token_1")
+            element_token_1.classList.add("hide"); 
+            let element_token_2 = document.getElementById("id_token_2")
+            element_token_2.classList.add("hide"); 
+                
+            var valueA = valueID.value
+
+            let tokenA = document.getElementById("valueTokenA")
+            let tokenB = document.getElementById("valueTokenB")
+            
+            e.value = 100 - parseInt(valueA)
+            tokenA.value = valueA
+            tokenB.value = 100 - parseInt(valueA)
+            //element_token_1.value = valueA
+            //element_token_1.value = valueB
+
+            let slider = document.querySelectorAll("input[name=position]")
+            slider[0].addEventListener("change", function(event) { //change, dann Funktion ausführen
+                var valueA = valueID.value
+                tokenA.value = valueA
+                element_token_1.value = valueA
+                tokenB.value = 100 - parseInt(valueA)
+                e.value = (100 - parseInt(valueA))/2
+                element_token_2.value = tokenB.value 
+            });
+
+            // <input type="number" name="efficiency_preferences" required="" id="id_efficiency_preferences" class="form-control">
+        </script>
+
+<style>
+    .slider{
+        width: 200px;
+    }
+    .outputs{
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+    .tokens{
+        padding-left: 35px;
+        margin-top: 10px;
+    }
+    .money{
+        margin-top: 10px;
+    }
+    .money-person-1{
+        padding-left: 25px;
+    }
+    .money-person-2{
+        padding-left: 200px;
+    }
+    .tokens-person-1{
+        padding-left: 15px;
+    }
+    .tokens-person-2{
+        padding-left: 220px;
+    }
+    .hide{
+        display:none !important;
+    }
+</style>
+
+    {% next_button %}
+{% endblock %}

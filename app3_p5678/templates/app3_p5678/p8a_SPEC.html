@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Guesses
+{% endblock %}
+
+
+{% block content %}
+    
+<p> Do you expect tournament participants with the color <b>Green</b> (Multiplier of 0.9) to be more or less 
+    or equally likely to win the tournament <b>with the special rule than without the special rule?</b></p>
+    
+    {% formfield player.belief1_specs %}
+    <br>
+<p> Do you expect tournament participants with the color <b>Blue</b> (Multiplier of 1) to be more or less 
+    or equally likely to win the tournament <b>with the special rule than without the special rule?</b></p>
+    
+    {% formfield player.belief2_specs %}
+    <br>
+<p> If you were a tournament participant of color <b>Green</b> (Multiplier of 0.9), would you expect yourself to be more or less or equally
+        likely to win the tournament <b> with the special rule than without the special rule?</b></p>
+               
+            {% formfield player.belief3_g_spec %}
+               <br>
+ <p>If you were a tournament participant of color <b>Blue</b> (Multiplier of 1),  would you expect yourself to be more or less or equally
+        likely to win the tournament <b> with the special rule than without the special rule?</b></p>
+                      
+           {% formfield player.belief3_b_spec %}
+    <br>
+<p> How do you think the introduction of the special rule affects the probability of winning 
+     of the Blue (Multiplier of 1) and the Green (Multiplier of 0.9) type? (choose one answer)</p>
+       
+        {% formfield player.belief4_specs %}
+        <br>
+ <p> Please click on More likely. </p>
+        
+           {% formfield player.attention_check2 %}
+     
+           <br>
+{% next_button %}
+
+{% endblock %}

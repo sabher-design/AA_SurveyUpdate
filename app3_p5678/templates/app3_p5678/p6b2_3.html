@@ -1,0 +1,84 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Explanation
+{% endblock %}
+
+{% block content %}
+<p> <b> <u>Example 1: </u> </b> </p>
+<p> In a group of six tournament participants, the final performances are as follows:</p>
+
+<table style="width: 535.4px;" border="1">
+    <tbody>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;Tournament participant</td>
+    <td style="width: 69px; text-align: center;">&nbsp;Color</td>
+    <td style="width: 100px; text-align: center;">Multiplier</td>
+    <td style="width: 136px; text-align: center;">Number of correctly encoded words&nbsp;</td>
+    <td style="width: 138.4px; text-align: center;">Final performance&nbsp;</td>
+    </tr>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;1</td>
+    <td style="width: 69px; text-align: center;">Green</td>
+    <td style="width: 100px; text-align: center;">0.9&nbsp;</td>
+    <td style="width: 136px; text-align: center;">&nbsp;1</td>
+    <td style="width: 138.4px; text-align: center;">&nbsp;0.9</td>
+    </tr>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;2</td>
+    <td style="width: 69px; text-align: center;">Green&nbsp;</td>
+    <td style="width: 100px; text-align: center;">0.9&nbsp;</td>
+    <td style="width: 136px; text-align: center;">&nbsp;2</td>
+    <td style="width: 138.4px; text-align: center;">&nbsp;1.8</td>
+    </tr>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;3</td>
+    <td style="width: 69px; text-align: center;">Green&nbsp;</td>
+    <td style="width: 100px; text-align: center;">0.9&nbsp;</td>
+    <td style="width: 136px; text-align: center;">&nbsp;3</td>
+    <td style="width: 138.4px; text-align: center;">&nbsp;2.7</td>
+    </tr>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;4</td>
+    <td style="width: 69px; text-align: center;">Blue&nbsp;</td>
+    <td style="width: 100px; text-align: center;">1&nbsp;</td>
+    <td style="width: 136px; text-align: center;">&nbsp;1</td>
+    <td style="width: 138.4px; text-align: center;">&nbsp;1</td>
+    </tr>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;5</td>
+    <td style="width: 69px; text-align: center;">Blue</td>
+    <td style="width: 100px; text-align: center;">1&nbsp;</td>
+    <td style="width: 136px; text-align: center;">&nbsp;1</td>
+    <td style="width: 138.4px; text-align: center;">&nbsp;1</td>
+    </tr>
+    <tr>
+    <td style="width: 88px; text-align: center;">&nbsp;6</td>
+    <td style="width: 69px; text-align: center;">Blue&nbsp;</td>
+    <td style="width: 100px; text-align: center;">1&nbsp;</td>
+    <td style="width: 136px; text-align: center;">&nbsp;3</td>
+    <td style="width: 138.4px; text-align: center;">&nbsp;3</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <br>
+    <p> <b> Question 1: </b> Assuming that the special rule <b>does not apply</b>, who are the two winners? </p>
+    
+    <p> Your answer is <b>incorrect</b>. The two tournament participants with the highest final performance 
+        (= number of correctly encoded words x multiplier) are the two winners of the tournament. 
+        In the example, these are tournament participants 3 and 6.</p>
+        
+    <p> <b> Question 2: </b> Assuming that the special rule <b>applies</b>, who are the two winners? </p>
+        
+    <p> Your answer is <b>correct</b>. Tournament participants 3 and 6 have the highest final performance 
+        (= number of correctly encoded words x  multiplier) and are the winners of the tournament.</p>
+    
+    <p> Since the special rule applies at least one winner must be a tournament participant from the Green Group. 
+        This is the case for tournament participant 3. So the special rule is automatically fulfilled. </p>
+    
+    <br>
+{% next_button %}
+
+{% endblock %}

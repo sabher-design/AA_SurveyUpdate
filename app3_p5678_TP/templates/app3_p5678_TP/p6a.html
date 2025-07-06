@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ The Tournament 
+{% endblock %}
+
+
+{% block content %}
+    <p>
+    <b> <u>Group allocation:</u> </b> You take part in the tournament in a group of six participants, 
+    with three members of color Green and three other members of color Blue. The groups are formed randomly. 
+    A new group of six participants is formed for every round of the tournament. </p>
+    
+    <br>
+    <p> 
+    <b> <u>Rules of the tournament:</u> </b> </p>
+    
+    <p> In every round of the tournament, two winners are determined. 
+        The winners are the two participants with highest final performance 
+        (=number of correctly encoded words x multiplier). The two winners receive a prize of 6 USD, 
+        while the other four tournament participants receive no prize.  </p>
+
+    <p> So your payment for each round depends on how high your final performance is compared to the other five tournament participants. 
+        Your final earnings from the tournament consist of the sum of your payments for each round. </p>
+    
+    <br>
+
+    <p> In addition, a <b>special rule might</b> be applied: At least one winner must be a member of the 
+        Green Group who has the low multiplier of 0.9. 
+        If this is not automatically the case given the final performances of all tournament participants, 
+        the tournament participant with the highest performance of the three members of the Green Group will 
+        replace the tournament participant with the second highest final performance as a winner. </p>
+        
+
+    <p> If there is a tie between two tournament participants, the winner will be determined randomly.</p>
+ 
+    <br>
+
+    <p>
+    <b> <u>Choice of the tournament rule:</u> </b> Whether or not this special rule is applied to the tournament depends on 
+    <b><i>the decisions of the decision makers.</i></b> Each will choose whether or not they want the special rule to be applied. 
+    One decision maker’s choice will be randomly selected to be implemented for the whole group. For every round, 
+    a new group of decision makers decides whether or not the special rule is applied. </p>
+    
+    <p> </p>
+{% next_button %}
+
+{% endblock %}

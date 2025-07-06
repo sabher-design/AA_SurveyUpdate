@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Examples
+{% endblock %}
+
+
+{% block content %}
+    <p> Now consider the second example.  </p>
+
+    <p> <b> <u>Example 2: </u> </b> </p>
+    <p> In a group of six tournament participants, the final performances are as follows:</p>
+
+    <table style="width: 535.4px;" border="1">
+        <tbody>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;Tournament participant</td>
+        <td style="width: 69px; text-align: center;">&nbsp;Color</td>
+        <td style="width: 100px; text-align: center;">Multiplier</td>
+        <td style="width: 136px; text-align: center;">Number of correctly encoded words&nbsp;</td>
+        <td style="width: 138.4px; text-align: center;">Final performance&nbsp;</td>
+        </tr>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;1</td>
+        <td style="width: 69px; text-align: center;">Green</td>
+        <td style="width: 100px; text-align: center;">0.9</td>
+        <td style="width: 136px; text-align: center;">&nbsp;3</td>
+        <td style="width: 138.4px; text-align: center;">&nbsp;2.7</td>
+        </tr>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;2</td>
+        <td style="width: 69px; text-align: center;">Green&nbsp;</td>
+        <td style="width: 100px; text-align: center;">&nbsp;0.9&nbsp;</td>
+        <td style="width: 136px; text-align: center;">&nbsp;2</td>
+        <td style="width: 138.4px; text-align: center;">&nbsp;1.8</td>
+        </tr>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;3</td>
+        <td style="width: 69px; text-align: center;">Green&nbsp;</td>
+        <td style="width: 100px; text-align: center;">&nbsp;0.9&nbsp;</td>
+        <td style="width: 136px; text-align: center;">&nbsp;1</td>
+        <td style="width: 138.4px; text-align: center;">&nbsp;0.9</td>
+        </tr>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;4</td>
+        <td style="width: 69px; text-align: center;">Blue&nbsp;</td>
+        <td style="width: 100px; text-align: center;">1&nbsp;</td>
+        <td style="width: 136px; text-align: center;">&nbsp;1</td>
+        <td style="width: 138.4px; text-align: center;">&nbsp;1</td>
+        </tr>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;5</td>
+        <td style="width: 69px; text-align: center;">Blue</td>
+        <td style="width: 100px; text-align: center;">1&nbsp;</td>
+        <td style="width: 136px; text-align: center;">&nbsp;3</td>
+        <td style="width: 138.4px; text-align: center;">&nbsp;3</td>
+        </tr>
+        <tr>
+        <td style="width: 88px; text-align: center;">&nbsp;6</td>
+        <td style="width: 69px; text-align: center;">Blue&nbsp;</td>
+        <td style="width: 100px; text-align: center;">1&nbsp;</td>
+        <td style="width: 136px; text-align: center;">&nbsp;4</td>
+        <td style="width: 138.4px; text-align: center;">&nbsp;4</td>
+        </tr>
+        </tbody>
+        </table>
+        
+ <br>
+ {% formfields %}
+    
+    <br>
+
+    
+
+{% next_button %}
+
+{% endblock %}

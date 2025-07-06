@@ -1,0 +1,190 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Guesses 
+{% endblock %}
+
+{% block content %}
+    
+
+{% formfield player.belief9_specs %}
+
+    <label class="col-form-label">
+        If you yourself were a tournament participant of the <strong>Green Group (Multiplier of 0.9),</strong>
+        how would you rate your own chances of winning the tournament 
+         <strong> with the special rule? </strong>
+    </label>
+
+    <div class="input-group">
+        <span class="input-group-text">0%</span>
+    
+        <input class="slider" type="range" name="position" id="positionID" value="1" min="1%" max="100%"
+            oninput="valueID.value = positionID.value;">
+    
+        <span class="input-group-text">100%</span>
+    </div>
+    <br>
+    <div class="outputs">
+        <div class="money">
+            <span>
+                <output class="money-person-1" name="valueName" id="valueID">0</output> <span>%</span>
+            </span>
+        </div>
+    </div>
+    
+
+
+    <label class="col-form-label">
+        If you yourself were a tournament participant of the 
+        <strong>Green Group (Multiplier of 0.9),</strong> how would you rate your own chances of winning 
+        the tournament  <strong> without the special rule?</strong>
+    </label>
+    
+    {% formfield player.belief10_specs %}
+    
+    <div class="input-group">
+        <span class="input-group-text">0%</span>
+    
+        <input class="slider" type="range" name="pos" id="posID" value="1" min="1%" max="100%"
+            oninput="valID.value = posID.value;">
+    
+        <span class="input-group-text">100%</span>
+    </div>
+    <br>
+    <div class="outputs">
+        <div class="money">
+            <span>
+                <output class="money-person-1" name="valueName" id="valID">0</output> <span>%</span>
+            </span>
+        </div>
+    </div>
+    
+
+
+
+    <label class="col-form-label">
+        If you yourself were a tournament participant 
+        of the <strong>Blue Group (Multiplier of 1),</strong> how would you rate your own your chances 
+        of winning the tournament  <strong>with the special rule?</strong>
+    </label>
+
+    {% formfield player.belief11_specs %}
+    
+    <div class="input-group">
+        <span class="input-group-text">0%</span>
+    
+        <input class="slider" type="range" name="posi" id="posiID" value="1" min="1%" max="100%"
+            oninput="valiID.value = posiID.value;">
+    
+        <span class="input-group-text">100%</span>
+    </div>
+    <br>
+    <div class="outputs">
+        <div class="money">
+            <span>
+                <output class="money-person-1" name="valueName" id="valiID">0</output> <span>%</span>
+            </span>
+        </div>
+    </div>
+
+    
+   
+     
+    <label class="col-form-label"></label>
+        If you yourself were a tournament participant of the 
+        <strong>Blue Group (Multiplier of 1),</strong> how would you rate your own chances of winning 
+        the tournament <strong> without the special rule?</strong>
+    </label>
+
+    {% formfield player.belief12_specs %}
+    
+    <div class="input-group">
+        <span class="input-group-text">0%</span>
+    
+        <input class="slider" type="range" name="pose" id="poseID" value="1" min="1%" max="100%"
+            oninput="valeID.value = poseID.value;">
+    
+        <span class="input-group-text">100%</span>
+    </div>
+    <br>
+    <div class="outputs">
+        <div class="money">
+            <span>
+                <output class="money-person-1" name="valueName" id="valeID">0</output> <span>%</span>
+            </span>
+        </div>
+    </div>
+
+
+
+    <script>
+        let element_belief9_specs = document.getElementById("id_belief9_specs")
+        let element_belief10_specs = document.getElementById("id_belief10_specs")
+        let element_belief11_specs = document.getElementById("id_belief11_specs")
+        let element_belief12_specs = document.getElementById("id_belief12_specs")
+
+        element_belief9_specs.classList.add("hide");
+        element_belief10_specs.classList.add("hide");
+        element_belief11_specs.classList.add("hide");
+        element_belief12_specs.classList.add("hide");
+    
+        let slider_1 = document.querySelectorAll("input[name=position]")
+        slider_1[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+            var value_1 = valueID.value
+            element_belief9_specs.value = value_1
+        });
+        let slider_2 = document.querySelectorAll("input[name=pos]")
+        slider_2[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+            var value_2 = valID.value
+            element_belief10_specs.value = value_2
+        });
+        let slider_3 = document.querySelectorAll("input[name=posi]")
+        slider_3[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+            var value_3 = valiID.value
+            element_belief11_specs.value = value_3
+        });
+        let slider_4 = document.querySelectorAll("input[name=pose]")
+        slider_4[0].addEventListener("change", function (event) { //change, dann Funktion ausführen
+            var value_4 = valeID.value
+            element_belief12_specs.value = value_4
+        });
+        
+
+
+    </script>
+    
+    <style>
+        .slider {
+            width: 200px;
+        }
+    
+        .outputs {
+            margin-top: -20px;
+            margin-bottom: 50px;
+        }
+    
+        .money-person-1 {
+            padding-left: 130px;
+        }
+    
+        .money-person-2 {
+            padding-left: 260px;
+        }
+    
+        .tokens-person-1 {
+            padding-left: 15px;
+        }
+        .hide {
+        display: none !important;
+        }
+    
+        
+    </style>
+
+
+
+{% next_button %}
+{% endblock %}
+
+ 

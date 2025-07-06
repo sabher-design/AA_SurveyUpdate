@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-18 12:09+0100\n"
+"PO-Revision-Date: 2017-11-07 17:17+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#: .\templates\word_encryption\Instructions1.html:5
+msgid "Instructions 1"
+msgstr "Anleitung 1"
+
+#: .\templates\word_encryption\Instructions1.html:12
+msgid ""
+"In this part of the experiment, you are supposed to encode combinations of "
+"letters <strong> (words) </strong> into numbers. <br>  <br>  In the task, "
+"three capital letters always yield a \"word\".<br> <br>  It is your task to "
+"allocate a number to each capital letter. The encryption code can always be "
+"found in a table below the corresponding letter"
+msgstr ""
+"In diesem Teil des Experimentes sollen Sie Kombinationen von Buchstaben "
+"<strong> (Wörter) </strong> als Zahlen verschlüsseln. <br>  <br>Innerhalb "
+"der Aufgabe ergeben drei Großbuchstaben immer ein \"Wort\". <br> <br> Ihre "
+"Aufgabe ist es jedem Buchstaben eine Zahl zuzuweisen. Der "
+"Verschlüsselungscode kann immer unterhalb des dazugehörigen Buchstabens "
+"gefunden werden"
+
+#: .\templates\word_encryption\Instructions2.html:8
+msgid "Instructions 2"
+msgstr "Anleitung 2"
+
+#: .\templates\word_encryption\Instructions2.html:15
+msgid ""
+"Please look at the sample picture at the bottom of the screen. <br> In this "
+"example, the participant has already encrypted three words correctly (see "
+"centered field: above). <br> Here, the three capital letters: <strong> \"B"
+"\", \"R\" and \"J\" </strong> have to be encoded. <br> <br> The solution "
+"follows immediately from the table: <br> <br> </p> <ul style=\"list-style-"
+"type:disc\" class=\"col-xs-12 text-center\"> <li>For \"B\" the code is: 986 "
+"</li> <li>For \"R\" the code is: 256  </li> <li>For \"J\", the code is: 376 "
+"</li> </ul> <br> <p class=\"col-xs-12 text-center\"> To make an entry, "
+"please click on the respective box below the capital letter. <br><br> "
+"<strong> Once you have entered all three numbers, click on \"Next\". </"
+"strong>"
+msgstr ""
+"Bitte betrachten Sie das Beispielbild am unteren Bildschirmrand. <br> In "
+"diesem Beispiel hat der Experimentteilnehmer bereits drei Wörter richtig "
+"verschlüsselt (Siehe das zentrierte obere Feld). <br>Jetzt müssen die drei "
+"Großbuchstaben: <strong> \"B\", \"R\" and \"J\" </strong>  verschlüsselt "
+"werden.<br> <br> Die Lösung folgt unmittelbar aus der Tabelle: <br> <br> </"
+"p> <ul style=\"list-style-type:disc\" class=\"col-xs-12 text-center\"> "
+"<li>Für \"B\" ist der Code: 986 </li> <li>Für \"R\" ist der Coder: 256  </"
+"li> <li>Für \"J\" ist der Code: 376 </li> </ul> <br> <p class=\"col-xs-12 "
+"text-center\"> Um eine Eingabe zu machen, klicken Sie bitte auf die "
+"jeweilige blaue Box unterhalb des Großbuchstabens. <br><br> <strong>  Sobald "
+"Sie alle drei Nummern eingegeben habe, klicken Sie bitte auf \"OK\". </"
+"strong>"
+
+#: .\templates\word_encryption\Instructions3.html:7
+msgid "Instructions 3"
+msgstr "Anleitung 3"
+
+#: .\templates\word_encryption\Instructions3.html:14
+#, python-format
+msgid ""
+"It is your task to encode as many words as possible within <strong> 10 "
+"minutes </strong>. <br> For each correctly encrypted word you get <strong> € "
+"%(rate)s. </strong> The remaining time (in seconds) is displayed in the "
+"upper right corner of the screen. <br> Please click \"Next\" to start the "
+"task."
+msgstr ""
+"Ihre Aufgabe ist es, innerhalb von <strong> 10 Minuten </strong> möglichst "
+"viele Wörter zu verschlüsseln. <br> Für jedes richtig verschlüsselte Wort "
+"erhalten Sie<strong> %(rate)s €. </strong>Die übrige Zeit (in Sekunden) wird "
+"Ihnen jeweils in der oberen rechten Ecke des Bildschirms angezeigt. <br> "
+"Klicken Sie bitte auf \"Weiter\" um mit der Aufgabe zu beginnen."
+
+#: .\templates\word_encryption\Results.html:6
+msgid "Results"
+msgstr "Ergebnis"
+
+#: .\templates\word_encryption\Results.html:11
+#, python-format
+msgid ""
+"\n"
+"        You have encoded %(solved)s words.\n"
+"            <br> <br> Therefore your profit in this part of the experiment "
+"is € %(profit)s\n"
+"        "
+msgstr ""
+"\n"
+"Sie haben ingesamt %(solved)s  Wörter verschlüsselt.<br> <br> Ihr Verdienst "
+"in diesem Teil des Experiments beträgt daher: %(profit)s €"
+
+#: .\templates\word_encryption\Task.html:6
+msgid "Word Encryption Task"
+msgstr "Wortverschlüsselungsaufgabe"
+
+#: .\templates\word_encryption\Task.html:12
+msgid "You currently encrypt word number:"
+msgstr "Sie verschlüsseln aktuell das Wort mit der Nummer:"
+
+#: .\templates\word_encryption\Task.html:13
+msgid "Number of correct solutions:"
+msgstr "Anzahl von richtigen Antworten:"
+
+#: .\templates\word_encryption\Task.html:17
+msgid "Word:"
+msgstr "Wort:"
+
+#: .\templates\word_encryption\Task.html:23
+msgid "Code:"
+msgstr "Code:"
+
+#~ msgid "Instructions Word Encryption Task"
+#~ msgstr "Anweisungen Wortverschlüsselungsaufgabe"
+
+#~ msgid ""
+#~ "In the following experiment you have the opportunity to earn money "
+#~ "depending on your behavior. Please turn off your mobile phone and do not "
+#~ "talk to other participants in the experiment. It is very important that "
+#~ "you follow these rules. If you have any question while reading these "
+#~ "instructions or during the experiment itself, we ask you to raise your "
+#~ "hand. We will immediately come to your desk and answer your question "
+#~ "individually."
+#~ msgstr ""
+#~ "Im folgenden Experiment haben Sie die Möglichkeit, abhängig von Ihrem "
+#~ "Verhalten Geld zu verdienen. Bitte schalten Sie Ihr Mobiltelefon aus und "
+#~ "sprechen Sie nicht mit anderen Teilnehmern des Experiments. Es ist sehr "
+#~ "wichtig, dass Sie diese Regeln befolgen. Wenn Sie beim Lesen dieser "
+#~ "Anleitung oder während des Experiments Fragen haben, bitten wir Sie, Ihre "
+#~ "Hand anzuheben. Wir kommen sofort an Ihren Tisch und beantworten Ihre "
+#~ "Frage individuell."
+
+#~ msgid ""
+#~ "\n"
+#~ "        You have solved %(solved)s and failed to solve %(notSolved)s "
+#~ "words.\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "        Sie haben %(solved)s Wörter gelöst. Leider konnten %(notSolved)s "
+#~ "Wörter nicht von Ihnen gelöst werden. "
+
+#~ msgid "Correct"
+#~ msgstr "Korrekt"
+
+#~ msgid "Wrong"
+#~ msgstr "Falsch"

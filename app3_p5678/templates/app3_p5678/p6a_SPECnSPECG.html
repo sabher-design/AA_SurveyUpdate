@@ -1,0 +1,56 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Rules of The Tournament
+{% endblock %}
+
+
+{% block content %}
+    <p> As a decision-maker, you will decide on the rules of the tournament but not take part in it yourself. </p>
+    
+    <p> <b> <u>Information about the tournament: </u> </b></p>
+ <ul>
+    <li><p> <b> <u>Group allocation:</u> </b> Each tournament participant takes part in the tournament in a group of six, 
+        with three members of the Green Group and three other members of the Blue Group. The groups are formed randomly 
+        and stay the same throughout the study. </p></li>
+
+    <li><p> <b> <u>Task:</u> </b> Tournament participants will see a number of words. Their task will be to encode 
+    as many of these words as possible in 5 mins. They do so by substituting the letters of the alphabet with 
+    numbers using an Encryption Table (see picture below). All tournament participants will be given the same words to encode in 
+    the same sequence. </p></li>
+
+    <img width="80%" height="80%" alt="Examplary Task" src="{% static "task.PNG" %}"/>
+    
+    <li><p> <b> <u>Rules of the tournament:</u> </b> Tournament participants’ earnings will depend on what we call “final performance”. 
+        It consists of number of correctly encoded words times a multiplier. The color of their group determines the 
+        multiplier of each tournament participant. Tournament participants in the Green Group have a multiplier of 0.9. 
+        Tournament participants in the Blue Group have a multiplier of 1. </p></li>
+
+    <p> For example, for tournament participants in the Green Group who encode 10 words correctly, 
+        their final performance is 10 x 0.9 = 9 words. For tournament participants in the Blue Group 
+        who encode 10 tasks correctly, their final performance is 10 x 1 = 10 words. </p>
+    
+    <p> The two tournament participants with highest final performance (= number of correctly encoded words*multiplier) 
+        are the two winners of the tournament.</p>
+    
+    <p> The two winners receive a prize of 6 USD, while the other four tournament participants receive no prize.</p>
+
+    <p> <b> <u>Special rule:</u> </b> In addition, a <b>special rule might</b> be applied: At least one winner must be 
+        a member of the Green Group who has the low multiplier of 0.9. If this is not automatically the case 
+        given the total performances of the tournament participant, the tournament participant with the highest performance 
+        of the three members of the Green Group will replace the tournament participant with the second highest 
+        final performance as a winner. </p>
+
+    <p> If there is a tie between two tournament participants, the winner will be determined randomly. </p>
+ </ul>
+
+    <p> <b> <u>Your choice of the tournament rule:</u> </b> Whether or not this special rule is applied to the tournament 
+        depends on <b><i>the decisions of you and five other randomly selected decision-makers.</i></b> Each will choose whether or not 
+        they want the special rule to be applied. One decision maker’s choice will be randomly selected to be applied to 
+        the tournament. This means there is a 1/6 probability that your choice will be implemented.  </p>
+        
+    <p> </p>
+{% next_button %}
+
+{% endblock %}

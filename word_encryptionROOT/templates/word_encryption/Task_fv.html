@@ -1,0 +1,290 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+   {%trans "Word Encryption Task" %}
+{% endblock %}
+
+{% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div class="container-fluid">
+            <div class="rowcol-xs-12 text-center alert alert-success" role="alert">
+                <p class="col-xs-12">{% trans "You currently encrypt word number: " %}<span id="task">1</span></p>
+                <p class="col-xs-12">{% trans "Number of correct solutions: " %}<span id="correct">0</span></p>
+            </div>
+        <div id="root"></div>       
+        <div class="row">
+            <p class="col-xs-1 col-xs-offset-2"> <b> {% trans "Word:"%} </b></p>
+            <p class="col-xs-1 col-xs-offset-1" id="ch1">W</p>
+            <p class="col-xs-1 col-xs-offset-1" id="ch2">R</p>
+            <p class="col-xs-1 col-xs-offset-1" id="ch3">L</p>
+        </div>
+        <div class="row">
+            <p class="col-xs-1 col-xs-offset-2"><b>{% trans "Code:"%} </b></p>
+            <input class="col-xs-1 col-xs-offset-1" name="co1" id="co1">
+            <input class="col-xs-1 col-xs-offset-1" name="co2" id="co2">
+            <input class="col-xs-1 col-xs-offset-1" name="co3" id="co3">
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <table class="col-xs-12 table text-center">
+            <thead>
+            <tr>
+                <th id="letter1" class="letter">A</th>
+                <th id="letter2" class="letter">B</th>
+                <th id="letter3" class="letter">C</th>
+                <th id="letter4" class="letter">D</th>
+                <th id="letter5" class="letter">E</th>
+                <th id="letter6" class="letter">F</th>
+                <th id="letter7" class="letter">G</th>
+                <th id="letter8" class="letter">H</th>
+                <th id="letter9" class="letter">I</th>
+                <th id="letter10" class="letter">J</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="code1">000</td>
+                <td id="code2">000</td>
+                <td id="code3">000</td>
+                <td id="code4">000</td>
+                <td id="code5">000</td>
+                <td id="code6">000</td>
+                <td id="code7">000</td>
+                <td id="code8">000</td>
+                <td id="code9">000</td>
+                <td id="code10">000</td>
+            </tr>
+            </tbody>
+        </table>
+        <input name="solved" id="solved" hidden>
+        <input name="notSolved" id="notSolved" hidden>
+        <br>
+        {{ form.solved.errors }}
+        {{ form.notSolved.errors }}
+        </div>
+    </div>
+    <button id="next" type="button" class="btn btn-info">Next</button>
+    
+<script>
+    var solved= 0;
+    var notSolved = 0;
+    var task = 1;
+    var alphabetic = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    var codes = new Array(10);
+    var currentWord = new Array(3);
+    var currentCode = new Array(3);
+
+    $(function(){
+        init();
+    });
+
+    function init(){
+        if(checkCookie("alpha")){
+            alphabetic = JSON.parse(getCookie("alpha"));        
+        } else {
+            shuffle(alphabetic);
+            setCookie("alpha", JSON.stringify(alphabetic), 20);    
+        }
+        
+        if(checkCookie("codes")){
+            codes = JSON.parse(getCookie("codes"));                       
+        } else {
+            for (var i= 0; i< 10; i++){
+                codes[i] =getRandomArbitrary(100, 1000);
+            }
+            setCookie("codes",  JSON.stringify(codes), 20);
+        }
+
+        if (checkCookie("currentWord") == true){
+            console.log("init nd");
+            currentWord = JSON.parse(getCookie("currentWord"));
+            currentCode = JSON.parse(getCookie("currentCode"));
+        } else {
+            // init task
+            console.log("init d");
+            for (var i=0; i< 3; i++){
+                var rand =getRandomArbitrary(0,10);
+                currentWord[i] = alphabetic[rand];
+                currentCode[i] = codes[rand];
+            }
+            setCookie("currentWord", JSON.stringify(currentWord), 20);
+            setCookie("currentCode", JSON.stringify(currentCode), 20);
+        }
+        for (var i=0; i < 3; i++ ){
+            index = i+1;
+            // console.log(currentWord[i]);          
+            $("#ch"+index).html(currentWord[i]);
+        }  
+        for (var i= 0; i < 10; i++){
+            index = i+1;
+            $("#letter" + index).html(alphabetic[i]);
+            $("#code" + index).html(codes[i]);
+        }
+    }
+
+    function initNext(){
+
+        shuffle(alphabetic);
+        setCookie("alpha", JSON.stringify(alphabetic), 20);
+
+        for (var i=0; i< 3; i++){
+            var rand =getRandomArbitrary(0,10);
+            currentWord[i] = alphabetic[rand];
+            currentCode[i] = codes[rand];
+        }
+        setCookie("currentWord", JSON.stringify(currentWord), 20);
+        setCookie("currentCode", JSON.stringify(currentCode), 20);
+        
+        for (var i=0; i < 3; i++ ){
+            index = i+1;          
+            $("#ch"+index).html(currentWord[i]);
+        }  
+
+        // set the letters and the codes in the html table
+        for (var i= 0; i < 10; i++){
+            index = i+1;
+            $("#letter" + index).html(alphabetic[i]);
+            $("#code" + index).html(codes[i]);
+        }
+    }
+
+    $('form').on('submit', function(){
+       setCookie("solved", "", -20); 
+       setCookie("alpha", "", -20); 
+       setCookie("codes", "", -20); 
+       setCookie("notSolved", "", -20); 
+       setCookie("task", "", -20); 
+       setCookie("currentWord", "", -20); 
+       setCookie("currentCode", "", -20);
+    });
+
+    $('#next').on('click', function(e){
+        e.preventDefault();
+        var co1 = parseInt($("#co1").val());
+        var co2 = parseInt($("#co2").val());
+        var co3 = parseInt($("#co3").val());
+        if (co1 == currentCode[0] && co2 == currentCode[1] && co3 == currentCode[2] ){
+            task++;
+            solved++;
+            $("#correct").html(solved);
+            $("#task").html(task);
+            $("#solved").val(solved);
+            
+            setCookie("solved", solved, 20);
+            setCookie("task", task, 20);
+            // clear the input fields
+            $("#co1").val("");
+            $("#co2").val("");
+            $("#co3").val("");          
+            initNext();
+            createAutoClosingAlert("#root", "correct" , 2000);
+        } else {
+            task++;
+            notSolved++;
+            $("#task").html(task);
+            $("#notSolved").val(notSolved);
+
+            setCookie("task", task, 20);              
+            setCookie("notSolved", notSolved, 20);
+            // clear the input fields
+            $("#co1").val("");
+            $("#co2").val("");
+            $("#co3").val("");
+            initNext();
+            createAutoClosingAlert("#root", "Wrong", 2000);
+        }
+    });
+
+    // helper functions..
+    function createAutoClosingAlert(selector,message, delay) {
+        $(selector).html('<div id="info" class="alert alert-info fade in">'
+                        +'<a href="#" class="close" data-dismiss="alert">&times;</a>'
+                    +' <strong>Warning!</strong> '+ message+'</div>');
+        var alert = $("#info").alert();
+        window.setTimeout(function() { alert.alert('close') }, delay);
+    }
+
+    function shuffle(a) {
+        var j, x, i;
+        for (i = a.length; i; i--) {
+            j = Math.floor(Math.random() * i);
+            x = a[i - 1];
+            a[i - 1] = a[j];
+            a[j] = x;
+        }
+    }
+
+     // Cookies management code
+    function setCookie(cname, cvalue, exMinutes) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exMinutes   * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getLetter(num){
+        switch(num){
+            case 1:
+            return 'A';
+            case 2:
+            return 'B';
+            case 3:
+            return 'C';
+            case 4:
+            return 'D';
+            case 5:
+            return 'E';
+            case 6:
+            return 'F';
+            case 7:
+            return 'G';
+            case 8:
+            return 'H';
+            case 9:
+            return 'I';
+            case 10:
+            return 'J';
+        }
+    }
+    function getRandomArbitrary(min, max) {
+        return parseInt(Math.random() * (max - min) + min);
+    }
+
+    // returns the value of a cookie
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var f = 0; f < ca.length; f++) {
+            var c = ca[f];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    // checks whether a cookie exist or not
+    function checkCookie(cname) {
+        var cook = getCookie(cname);
+        if (cook != "") {
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+
+<style>
+ #root > .alert{
+    padding:0;
+    margin:0;
+    display: none;}
+</style>
+
+{% endblock %}

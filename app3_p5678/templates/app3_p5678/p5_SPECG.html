@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Colors
+{% endblock %}
+
+
+{% block content %}
+    <p>
+    <b> <u>Color:</u> </b> Each participant is randomly assigned to one of two groups, the Green Group or the Blue Group. 
+    This assignment remains the same throughout the study. Half of the participants will be in the Green Group. 
+    The other half will be in the Blue Group. Both tournament participants and decision makers are assigned a group. </p>  
+    
+    <br>
+
+    <p>
+     You belong to the <b>{{player.color}}</b> Group. </p>
+     
+    <p>  </p>
+    
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+ 
+{% block title %} 
+  Questionnaire
+{% endblock %}
+
+{% block content %}
+
+<p> This question is simple: When asked for your favorite drink, you must choose "Carrot juice". </p>
+
+
+<p>What is your favorite drink?</p>
+
+{% formfield player.attention_check3%}
+
+{% next_button %}
+
+{% endblock %}

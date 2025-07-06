@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Feedback"%}
+{% endblock %}
+
+{% block content %}
+    <h5>
+    {% blocktrans with solved_round6=player.solved_round6 notSolved_round6=player.notSolved_round6 %}
+    The time for the word encoding task in <b> the last round of the tournament </b> is up. You have encoded {{solved_round6}} words correctly, and {{notSolved_round6}} words incorrectly.
+    {% endblocktrans %}
+    </h5>
+
+    <br>
+    <p> 
+        You will be informed about the outcome of this round of the tournament in a separate feedback e-mail when you receive your payment.
+    </p>
+
+    <br>
+
+    <p> 
+        <b> The next part is a questionnaire. </b>
+    </p>
+
+    <br>
+    {% next_button %}
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+  Colors and Multipliers
+{% endblock %}
+
+
+{% block content %}
+    <p>
+    <b> <u>Color:</u> </b> Each participant is randomly assigned to one of two groups, the Green Group or the Blue Group. 
+    This assignment remains the same throughout the study. Half of the participants will be in the Green Group. 
+    The other half will be in the Blue Group.  </p>
+    
+    
+    <p><b>You belong to the {{player.color}} Group. </b></p>
+
+ 
+    <p> During the tournament, you will complete the word encoding task for 5 minutes. 
+        Your earnings from this task will depend on what we call “final performance”. 
+        It consists of the number of correctly encoded words times a multiplier. 
+        Participants in the Green Group have a multiplier of 0.9. Participants in the Blue Group have a multiplier of 1.
+     </p>
+ 
+    <p>For example, if you are in the Green Group and you encode 10 words correctly, your final performance is 10 x 0.9 = 9 words. 
+       If you are in the Blue Group and you encode 10 words correctly, your final performance is 10 x 1 = 10 words.
+     </p>
+         
+     <p> Since you are in the Blue Group your final performance is: </p>
+        
+      <p>Final performance = 1 x total number of correctly encoded words in five minutes
+         </p>
+    
+{% next_button %}
+
+{% endblock %}

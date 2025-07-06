@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Please answer the following questions about yourself.
+    </p>
+
+    {% formfields %}
+
+    
+    <!-- <style>
+        .hide{
+            display:none !important;
+            /* verschwinden lassen  */
+        }
+        .show{
+            display:block !important;
+            /* anzeigen lassen  */
+        }
+    </style>
+
+    <script>
+        // hide form-group children_yes, getElementbyid ist eine suchfunktion 
+        document.getElementsByClassName("form-group")[1].classList.add("hide"); 
+
+        // add event listener to input children
+        var e = document.querySelectorAll("input[name=children]")
+        e[0].addEventListener("change", function(event) {
+            if (e[0].checked) {
+                // if user checks "yes", add class show to form-group children
+            document.getElementsByClassName("form-group")[1].classList.add("show");
+            }
+        });
+ // even Listener noch hinzufügen für No 
+        // wir greifen über eine Varibale auf das html element zu 
+        //den evenlistener lassen wir auf das Element laufen und reagiert dan auf eine Änderung bei der Eingabe
+        //sobald eine Eingabe stattfindet d.h. if element ist checked dann lassen wir die variable/die Frage
+        //verschwinden 
+
+    </script> -->
+
+{% next_button %}
+
+{% endblock %}
+
+
+
+
+

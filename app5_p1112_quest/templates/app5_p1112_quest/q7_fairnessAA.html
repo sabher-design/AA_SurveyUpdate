@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+   Questionnaire
+{% endblock %}
+
+{% block content %}
+
+
+       <br>
+        <p>
+            On a scale between 0 (completely unfair) and 6 (completely fair):
+        </p>
+        <p>
+            How fair do you perceive the rules of the tournament if <b>the special rule is applied?</b>
+        </p>
+        {% formfield player.fairness_AA %}
+        <p>
+            How fair do you perceive the rules of the tournament if <b>the special rule is not applied?</b>
+        </p>
+        {% formfield player.fairness_noAA %}
+
+        <br>
+        <p><b>Reminder:</b></p>
+        <ul>
+              <li><p> <b>The special rule is applied: </b> At least one winner must be a member of the Green Group who has the low multiplier of 0.9. 
+              If this is not automatically the case, the tournament participant with the highest performance among the three members of the Green Group
+               will replace the tournament participant with the second highest final performance as a winner.</p></li>
+
+             <li><p> <b>The special rule is not applied:</b> The two tournament participants with highest final performance 
+                (= number of correctly encoded words x multiplier) are the two winners of the tournament, regardless of whether they are in the Green Group or the Blue Group.</p></li>
+                
+        </ul>
+
+    {% next_button %}
+{% endblock %}

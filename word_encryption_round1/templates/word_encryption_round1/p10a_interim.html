@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Feedback"%}
+{% endblock %}
+
+{% block content %}
+    <h5>
+    {% blocktrans with solved_round1=player.solved_round1 notSolved_round1=player.notSolved_round1 %}
+    The time for the word encoding task in <b> round 1</b> is up. You have encoded {{solved_round1}} words correctly, and {{notSolved_round1}} words incorrectly.
+    {% endblocktrans %}
+    </h5>
+
+    <br>
+    <p> 
+        You will be informed about the outcome of this round of the tournament in a separate feedback e-mail when you receive your payment.
+    </p>
+
+    <br>
+
+    <p> 
+        You will now participate in round 2 of the tournament. The time starts once you click “Next”.
+    </p>
+
+    <br>
+    {% next_button %}
+
+
+{% endblock %}
