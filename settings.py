@@ -4,7 +4,7 @@ SESSION_CONFIGS = [
      dict(
         name='Questionnaire_AA_update',
         display_name='Questionnaire_AA_update',
-        num_demo_participants=5,
+        num_demo_participants=100,
         app_sequence=['app5_p1112_quest_update']
      ),
      #women-testing
