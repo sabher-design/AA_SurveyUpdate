@@ -11,8 +11,38 @@
         <em> Please answer the following questions. </em>
     </p>
 
-    {% formfields %}
+        {% for field in form %}
+    <div id="field-{{ field.name }}">
+      {{ field.label_tag }} {{ field }}
+    {% if field.name == 'AA_affected_yes' %}
+            <br>
+        {% endif %}
+    </div>
+        {% endfor %}
 
-{% next_button %}
+    <br>
+    <br>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function toggleFields() {
+            const yesNo = document.querySelector('input[name="AA_affected"]:checked');
+            const show = yesNo && yesNo.value === "Yes";
+        document.getElementById("field-AA_benefited").style.display = show ? "block" : "none";
+        document.getElementById("field-AA_context").style.display = show ? "block" : "none";
+        }
+
+
+        document.querySelectorAll('input[name="AA_affected"]').forEach(el => {
+            el.addEventListener('change', toggleFields);
+        });
+
+    toggleFields(); // run once on page load
+    });
+    </script>
+
+
+
+    {% next_button %}
 
 {% endblock %}

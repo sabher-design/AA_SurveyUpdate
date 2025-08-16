@@ -32,10 +32,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         for p in self.get_players():
             groups = ['women', 'minorities', 'disabilities']
-            p.aa_order_favor = json.dumps(random.sample(groups, k=3))
-            p.aa_order_disadvantage = json.dumps(random.sample(groups, k=3))
-            p.aa_order_effort = json.dumps(random.sample(groups, k=3))
-            p.aa_order_skills = json.dumps(random.sample(groups, k=3))
+            p.aa_order_groups = json.dumps(random.sample(groups, k=3))
 
 
 
@@ -50,10 +47,8 @@ class Player(BasePlayer):
         label="Please enter your Prolific ID to start the study.",
         blank = False)
 
-    aa_order_favor = models.StringField()
-    aa_order_disadvantage = models.StringField()
-    aa_order_effort = models.StringField()
-    aa_order_skills = models.StringField()
+    aa_order_groups = models.StringField()
+
 
 
     # --- Favor/Oppose ---
@@ -85,15 +80,15 @@ class Player(BasePlayer):
                                                  widget=widgets.RadioSelectHorizontal,
                                                  choices=list(range(0, 11)))
 
-    aa_belief_disadvantage_minorities = models.IntegerField(label="To which extent do you believe that racial minorities are facing unjustified disadvantage and/or discrimination in everyday life?",
+    aa_belief_disadvantage_minorities = models.IntegerField(label="To which extent do you believe that people belonging to racial minorities are facing unjustified disadvantage and/or discrimination in everyday life?",
                                                             widget=widgets.RadioSelectHorizontal,
                                                             choices=list(range(0, 11)))
 
-    aa_belief_effort_minorities = models.IntegerField(label="To which extent do you believe that racial minorities are exerting less effort to perform strongly in everyday life (e.g. in education or work environments) than people who do not belong to a racial minority?",
+    aa_belief_effort_minorities = models.IntegerField(label="To which extent do you believe that people belonging to racial minorities are exerting less effort to perform strongly in everyday life (e.g. in education or work environments) than people who do not belong to a racial minority?",
                                                       widget=widgets.RadioSelectHorizontal,
                                                       choices=list(range(0, 11)))
 
-    aa_belief_skills_minorities = models.IntegerField(label="To which extent do you believe that racial minorities tend to have lower inborn skills than people who do not belong to a racial minority?",
+    aa_belief_skills_minorities = models.IntegerField(label="To which extent do you believe that people belonging to racial minorities tend to have lower inborn skills than people who do not belong to a racial minority?",
                                                       widget=widgets.RadioSelectHorizontal,
                                                       choices=list(range(0, 11)))
 
@@ -107,7 +102,27 @@ class Player(BasePlayer):
 
     aa_belief_skills_disabilities = models.IntegerField(label="To which extent do you believe that people with disabilities tend to have lower inborn skills than people who are not disabled?",
                                                         widget=widgets.RadioSelectHorizontal,
+
                                                         choices=list(range(0, 11)))
+    # Efficiency loss
+    efficiency_loss_women = models.IntegerField(
+        choices=list(range(0, 11)),
+        widget=widgets.RadioSelectHorizontal,
+        label='''To which extent do you believe that affirmative action programs for women induce efficiency losses, 
+        e.g., due to less productive people being admitted to university or being hired or promoted?''')
+
+    efficiency_loss_minorities = models.IntegerField(
+        choices=list(range(0, 11)),
+        widget=widgets.RadioSelectHorizontal,
+        label='''To which extent do you believe that affirmative action programs for racial minorities
+         induce efficiency losses, e.g., due to less productive people being admitted to university or being hired or 
+         promoted?''')
+
+    efficiency_loss_disabilities = models.IntegerField(
+        choices=list(range(0, 11)),
+        widget=widgets.RadioSelectHorizontal,
+        label='''To which extent do you believe that affirmative action programs for people with disabilities
+         induce efficiency losses, e.g., due to less productive people being admitted to university or being hired or promoted?''')
 
 
     risk = models.IntegerField(
@@ -198,7 +213,7 @@ class Player(BasePlayer):
                  'Some college but no degree', 'Associate degree in college (2-year college)',
                  '''Bachelor's degree (4-year college)''',
                  '''Master's degree (For example: MA, MS, MEng, MEd, MSW, MBA)''',
-                 'Professional School Degree or Doctorate Degree (For example: MD, DDS,DVM,LLB,JD, PhD, EdD)'],
+                 'Professional School Degree or Doctorate Degree (For example: MD, DDS, DVM, LLB, JD, PhD, EdD)'],
         widget=widgets.RadioSelect)
 
     sexual_orientation = models.StringField(
@@ -353,27 +368,10 @@ class Player(BasePlayer):
     AA_benefited = models.StringField(
         label='Do you believe that you have ever benefited from affirmative action in your life?',
         choices=['Yes, I believe I have rather benefited', 'No, I believe I have rather been harmed'],
-        widget=widgets.RadioSelect)
+        widget=widgets.RadioSelect,
+        blank=True)
 
     AA_context = models.StringField(
-        label='Please state the context/kind of affirmative action measure(s):')
+        label='Please state the context/kind of affirmative action measure(s):',
+        blank=True)
 
-    # Efficiency loss
-    efficiency_loss_women = models.IntegerField(
-        choices=list(range(11)),
-        widget=widgets.RadioSelectHorizontal,
-        label='''To which extent do you believe that affirmative action programs for <strong>women</strong> induce efficiency losses, 
-        e.g., due to less productive people being admitted to university or being hired or promoted?''')
-
-    efficiency_loss_racial_minorities = models.IntegerField(
-        choices=list(range(11)),
-        widget=widgets.RadioSelectHorizontal,
-        label='''To which extent do you believe that affirmative action programs for <strong>racial minorities</strong>
-         induce efficiency losses, e.g., due to less productive people being admitted to university or being hired or 
-         promoted?''')
-
-    efficiency_loss_disabilities = models.IntegerField(
-        choices=list(range(11)),
-        widget=widgets.RadioSelectHorizontal,
-        label='''To which extent do you believe that affirmative action programs for <strong>people with disabilities</strong>
-         induce efficiency losses, e.g., due to less productive people being admitted to university or being hired or promoted?''')

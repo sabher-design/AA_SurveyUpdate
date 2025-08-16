@@ -1,4 +1,4 @@
-{% extends "global/Page.html" %}
+{% extends "global/Page.html"%}
 {% load otree static %}
 
 {% block title %}
@@ -7,19 +7,29 @@
 
 {% block content %}
 
-    <p>
-        <em> Please tick a box on the scale, where the value 0 means: ‘not at all’ and the value 10 means: ‘very strongly’. </em>
-    </p>
-
-    {% for field in form %}
-        <div style="margin-bottom: 35px;">
-            <p><label>{{ field.label|safe }}</label></p>
-            {{ field }}
-        </div>
-    {% endfor %}
+    <em>Please tick a box on the scale, where the value 0 means: ‘not at all’ and the value 10 means: ‘very strongly’.</em>
 
 
+    <br>
+    <br>
 
-{% next_button %}
+    <form method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group mb-4">
+                <label class="mb-2">{{ field.label }}</label><br>
+                {% for subfield in field %}
+                    <div class="form-check form-check-inline">
+                        {{ subfield.tag }}
+                        <label class="form-check-label">{{ subfield.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </form>
+
+    <br>
+        {% next_button %}
 
 {% endblock %}

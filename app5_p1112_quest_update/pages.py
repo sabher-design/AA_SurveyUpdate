@@ -8,10 +8,8 @@ import json
 def creating_session(subsession):
     for p in subsession.get_players():
         groups = ['women', 'minorities', 'disabilities']
-        p.aa_order_favor = json.dumps(random.sample(groups, k=3))
-        p.aa_order_disadvantage = json.dumps(random.sample(groups, k=3))
-        p.aa_order_effort = json.dumps(random.sample(groups, k=3))
-        p.aa_order_skills = json.dumps(random.sample(groups, k=3))
+        p.aa_order_groups = json.dumps(random.sample(groups, k=3))
+
 class p0_prolificID(Page):
     form_model = 'player'
     form_fields = ['ProlificID']
@@ -23,7 +21,9 @@ class AAFavorPage(Page):
     form_model = 'player'
 
     def get_form_fields(self):
-        groups = json.loads(self.player.aa_order_favor)
+        if not self.player.aa_order_groups:
+            return ['aa_favor_women', 'aa_favor_minorities', 'aa_favor_disabilities']
+        groups = json.loads(self.player.aa_order_groups)
         return [f'aa_favor_{g}' for g in groups]
 
 
@@ -31,7 +31,9 @@ class AADisadvantagePage(Page):
     form_model = 'player'
 
     def get_form_fields(self):
-        groups = json.loads(self.player.aa_order_disadvantage)
+        if not self.player.aa_order_groups:
+            return ['aa_favor_women', 'aa_favor_minorities', 'aa_favor_disabilities']
+        groups = json.loads(self.player.aa_order_groups)
         return [f'aa_belief_disadvantage_{g}' for g in groups]
 
 
@@ -39,7 +41,9 @@ class AAEffortPage(Page):
     form_model = 'player'
 
     def get_form_fields(self):
-        groups = json.loads(self.player.aa_order_effort)
+        if not self.player.aa_order_groups:
+            return ['aa_favor_women', 'aa_favor_minorities', 'aa_favor_disabilities']
+        groups = json.loads(self.player.aa_order_groups)
         return [f'aa_belief_effort_{g}' for g in groups]
 
 
@@ -47,9 +51,20 @@ class AASkillsPage(Page):
     form_model = 'player'
 
     def get_form_fields(self):
-        groups = json.loads(self.player.aa_order_skills)
+        if not self.player.aa_order_groups:
+            return ['aa_favor_women', 'aa_favor_minorities', 'aa_favor_disabilities']
+        groups = json.loads(self.player.aa_order_groups)
         return [f'aa_belief_skills_{g}' for g in groups]
 
+
+class q11_efficiency_loss(Page):
+    form_model = 'player'
+
+    def get_form_fields(self):
+        if not self.player.aa_order_groups:
+            return ['aa_favor_women', 'aa_favor_minorities', 'aa_favor_disabilities']
+        groups = json.loads(self.player.aa_order_groups)
+        return [f'efficiency_loss_{g}' for g in groups]
 
 
 #class p10_Intro_survey_update(Page):
@@ -116,18 +131,19 @@ class q10_AA(Page):
 
     def error_message(self, values):
         if values['AA_affected'] == 'Yes' and not values['AA_affected_yes']:
-            return 'Please describe the context if you answered "Yes".'
-
-class q11_efficiency_loss(Page):
-    form_model = 'player'
-    form_fields = ['efficiency_loss_women', 'efficiency_loss_racial_minorities', 'efficiency_loss_disabilities']
-
+            return 'Please describe the context/kind if you answered "Yes".'
+        if values['AA_affected'] == 'Yes' and not values['AA_benefited']:
+            return 'Please indicate whether you have ever benefited from affirmative action in your life.'
+        if values['AA_benefited'] == 'Yes, I believe I have rather benefited' and not values['AA_context']:
+            return 'Please describe the context/kind.'
+        if values['AA_benefited'] == 'No, I believe I have rather been harmed' and not values['AA_context']:
+            return 'Please describe the context/kind.'
 
 class goodbye(Page):
     pass
 
-page_sequence = [p0_prolificID, p1_intro, AAFavorPage, AADisadvantagePage, AAEffortPage, AASkillsPage, q1_risk, q2_socialpref,
+page_sequence = [p0_prolificID, p1_intro, AAFavorPage, AADisadvantagePage, AAEffortPage, AASkillsPage, q11_efficiency_loss, q1_risk, q2_socialpref,
 q3_demographics, attention_check3, q4_politic, q5_discrimination, q6_efficiencypref_update,
-q8_1overconfidence_quiz, q8_2overconfidence_quiz, q8_overconfidence, attention_check1, q9_disability_status, q10_AA, q11_efficiency_loss, goodbye]
+q8_1overconfidence_quiz, q8_2overconfidence_quiz, q8_overconfidence, attention_check1, q9_disability_status, q10_AA, goodbye]
 
 
