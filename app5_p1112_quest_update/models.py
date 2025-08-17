@@ -102,8 +102,21 @@ class Player(BasePlayer):
 
     aa_belief_skills_disabilities = models.IntegerField(label="To which extent do you believe that people with disabilities tend to have lower inborn skills than people who are not disabled?",
                                                         widget=widgets.RadioSelectHorizontal,
-
                                                         choices=list(range(0, 11)))
+
+    # Fairness
+    aa_belief_fairness_women = models.IntegerField(label="How fair do you consider affirmative action programs for women?",
+                                            widget=widgets.RadioSelectHorizontal,
+                                            choices=list(range(0, 11)))
+
+    aa_belief_fairness_minorities = models.IntegerField(label="How fair do you consider affirmative action programs for people belonging to racial minorities?",
+                                                 widget=widgets.RadioSelectHorizontal,
+                                                 choices=list(range(0, 11)))
+
+    aa_belief_fairness_disabilities = models.IntegerField(label="How fair do you consider affirmative action programs for people with disabilities?",
+                                                   widget=widgets.RadioSelectHorizontal,
+                                                   choices=list(range(0, 11)))
+
     # Efficiency loss
     efficiency_loss_women = models.IntegerField(
         choices=list(range(0, 11)),

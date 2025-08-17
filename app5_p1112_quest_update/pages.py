@@ -57,6 +57,16 @@ class AASkillsPage(Page):
         return [f'aa_belief_skills_{g}' for g in groups]
 
 
+class AAFairnessPage(Page):
+    form_model = 'player'
+
+    def get_form_fields(self):
+        if not self.player.aa_order_groups:
+            return ['aa_favor_women', 'aa_favor_minorities', 'aa_favor_disabilities']
+        groups = json.loads(self.player.aa_order_groups)
+        return [f'aa_belief_fairness_{g}' for g in groups]
+
+
 class q11_efficiency_loss(Page):
     form_model = 'player'
 
@@ -142,7 +152,7 @@ class q10_AA(Page):
 class goodbye(Page):
     pass
 
-page_sequence = [p0_prolificID, p1_intro, AAFavorPage, AADisadvantagePage, AAEffortPage, AASkillsPage, q11_efficiency_loss, q1_risk, q2_socialpref,
+page_sequence = [p0_prolificID, p1_intro, AAFavorPage, AADisadvantagePage, AAEffortPage, AASkillsPage, AAFairnessPage, q11_efficiency_loss, q1_risk, q2_socialpref,
 q3_demographics, attention_check3, q4_politic, q5_discrimination, q6_efficiencypref_update,
 q8_1overconfidence_quiz, q8_2overconfidence_quiz, q8_overconfidence, attention_check1, q9_disability_status, q10_AA, goodbye]
 
